@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ROSA Productos Digitales</title>
+  <link rel="icon" href="imágenes/icono.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --fondo:       #f9ece8;
+      --rosa-medio:  #e8a898;
+      --dorado:      #c9a96e;
+      --texto:       #6b5b52;
+      --dorado-txt:  #b8864e;
+    }
+
+    body {
+      background-color: var(--fondo);
+      color: var(--texto);
+      font-family: 'Lato', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* ─── HEADER ─── */
+    header {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 32px 20px 0;
+      gap: 24px;
+    }
+
+    .logo-wrap img {
+      height: 90px;
+      width: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 8px rgba(180, 130, 100, 0.25));
+    }
+
+    .banner-wrap {
+      width: 100%;
+      max-width: 680px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(180, 130, 100, 0.18);
+    }
+
+    .banner-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* ─── TAGLINE ─── */
+    .tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.3rem, 4vw, 1.75rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--dorado-txt);
+      text-align: center;
+      margin-top: 4px;
+      letter-spacing: 0.02em;
+    }
+
+    /* ─── LINKS SECTION ─── */
+    main {
+      width: 100%;
+      max-width: 480px;
+      padding: 32px 24px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 16px 24px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.97rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(180, 130, 100, 0.28);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+    }
+
+    /* Variante principal — dorado */
+    .btn-dorado {
+      background: linear-gradient(135deg, #c9a96e 0%, #d4b882 100%);
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(180, 130, 100, 0.22);
+    }
+
+    /* Variante secundaria — rosa */
+    .btn-rosa {
+      background: linear-gradient(135deg, #e8a898 0%, #efb9ab 100%);
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(232, 168, 152, 0.28);
+    }
+
+    /* Variante outline */
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--dorado);
+      color: var(--dorado-txt);
+      box-shadow: 0 2px 10px rgba(180, 130, 100, 0.10);
+    }
+
+    .btn-outline:hover {
+      background: rgba(201, 169, 110, 0.08);
+    }
+
+    /* Iconos SVG inline */
+    .btn svg {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    /* Separador decorativo */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--rosa-medio);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.15em;
+      margin: 4px 0;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--rosa-medio), transparent);
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      margin-top: auto;
+      padding: 24px 20px 36px;
+      text-align: center;
+    }
+
+    .footer-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: var(--dorado-txt);
+      letter-spacing: 0.03em;
+    }
+
+    .footer-copy {
+      font-size: 0.75rem;
+      color: var(--rosa-medio);
+      margin-top: 6px;
+      font-weight: 300;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 400px) {
+      header { padding: 24px 16px 0; }
+      main { padding: 24px 16px 32px; gap: 12px; }
+      .btn { font-size: 0.88rem; padding: 14px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ════════════ HEADER ════════════ -->
+  <header>
+    <div class="logo-wrap">
+      <img src="imágenes/logo.png" alt="ROSA Productos Digitales" />
+    </div>
+
+    <div class="banner-wrap">
+      <img src="imágenes/banner.png" alt="Banner ROSA" />
+    </div>
+
+    <p class="tagline">Productos digitales con amor y propósito</p>
+  </header>
+
+  <!-- ════════════ LINKS ════════════ -->
+  <main>
+
+    <!-- Tienda Nube -->
+    <a href="https://ordenarte8.mitiendanube.com/" target="_blank" rel="noopener" class="btn btn-dorado">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6 2h12l1.5 6H4.5L6 2zm-2 7h16v13H4V9zm6 2v2H8v2h4v2h2v-2h2v-2h-4v-2h-2z"/>
+      </svg>
+      Tiendanube
+    </a>
+
+    <!-- NutriOrden -->
+    <a href="https://nutriorden.lovable.app" target="_blank" rel="noopener" class="btn btn-rosa">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/>
+      </svg>
+      NutriOrden
+    </a>
+
+    <div class="divider">✦</div>
+
+    <!-- Hotmart -->
+    <a href="https://hotmart.com/es/club/carina-gimenez" target="_blank" rel="noopener" class="btn btn-dorado">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zm0 12.5L3 11.25V13l9 4.91L21 13v-1.75L12 15.5z"/>
+      </svg>
+      Hotmart
+    </a>
+
+    <!-- Etsy -->
+    <a href="https://www.etsy.com/shop/ROSAproductosdigit" target="_blank" rel="noopener" class="btn btn-outline">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M9.16 19.94c-.39 0-.7-.31-.7-.7V4.76c0-.39.31-.7.7-.7h7.69c.39 0 .7.31.7.7v1.95c0 .39-.31.7-.7.7H11.5v3.86h4.5c.39 0 .7.31.7.7v1.95c0 .39-.31.7-.7.7h-4.5v4.56h5.35c.39 0 .7.31.7.7v1.95c0 .39-.31.7-.7.7H9.16z"/>
+      </svg>
+      Etsy
+    </a>
+
+    <div class="divider">✦</div>
+
+    <!-- WhatsApp -->
+    <a href="https://wa.me/5493764552196" target="_blank" rel="noopener" class="btn btn-rosa">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.472-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+        <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.852L.057 23.25l5.546-1.452A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.002-1.368l-.358-.213-3.296.864.878-3.208-.234-.37A9.816 9.816 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/>
+      </svg>
+      WhatsApp
+    </a>
+
+  </main>
+
+  <!-- ════════════ FOOTER ════════════ -->
+  <footer>
+    <p class="footer-text">Planificá bonito, viví mejor 🌹</p>
+    <p class="footer-copy">© 2026 ROSA Productos Digitales</p>
+  </footer>
+
+</body>
+</html>
