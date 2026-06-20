@@ -34,235 +34,373 @@
       align-items: center;
     }
 
-    /* ─── HEADER ─── */
-    header {
+    /* ─── BANNER FULL WIDTH ─── */
+    .banner-full {
       width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 32px 20px 0;
-      gap: 24px;
+      line-height: 0;
     }
 
-    .logo-wrap img {
-      height: 90px;
-      width: auto;
-      object-fit: contain;
-      filter: drop-shadow(0 2px 8px rgba(180, 130, 100, 0.25));
-    }
-
-    .banner-wrap {
-      width: 100%;
-      max-width: 680px;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 8px 30px rgba(180, 130, 100, 0.18);
-    }
-
-    .banner-wrap img {
+    .banner-full img {
       width: 100%;
       height: auto;
       display: block;
+      object-fit: cover;
     }
 
-    /* ─── TAGLINE ─── */
-    .tagline {
+    /* ─── SECCIÓN AGENDAS ─── */
+    .section-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.3rem, 4vw, 1.75rem);
-      font-weight: 300;
+      font-size: clamp(1.5rem, 5vw, 2.2rem);
+      font-weight: 400;
       font-style: italic;
       color: var(--dorado-txt);
       text-align: center;
-      margin-top: 4px;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.04em;
+      margin: 48px 24px 32px;
     }
 
-    /* ─── LINKS SECTION ─── */
-    main {
+    .cards-grid {
       width: 100%;
-      max-width: 480px;
-      padding: 32px 24px 40px;
+      max-width: 900px;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 28px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 6px 28px rgba(180, 130, 100, 0.15);
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 40px rgba(180, 130, 100, 0.22);
+    }
+
+    .card-img {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      display: block;
+      background: #f0e0d8;
+    }
+
+    .card-body {
+      padding: 20px 22px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      flex: 1;
+    }
+
+    .card-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.45rem;
+      font-weight: 600;
+      color: var(--dorado-txt);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .card-desc {
+      font-size: 0.88rem;
+      color: var(--texto);
+      line-height: 1.5;
+      font-weight: 300;
     }
 
     .btn {
-      display: flex;
+      display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      width: 100%;
-      padding: 16px 24px;
+      gap: 8px;
+      padding: 13px 22px;
       border-radius: 50px;
       text-decoration: none;
       font-family: 'Lato', sans-serif;
-      font-size: 0.97rem;
+      font-size: 0.85rem;
       font-weight: 700;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.07em;
       text-transform: uppercase;
-      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
       cursor: pointer;
       border: none;
+      margin-top: auto;
     }
 
     .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 28px rgba(180, 130, 100, 0.28);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(180, 130, 100, 0.3);
     }
 
-    .btn:active {
-      transform: translateY(0);
-    }
-
-    /* Variante principal — dorado */
     .btn-dorado {
       background: linear-gradient(135deg, #c9a96e 0%, #d4b882 100%);
       color: #fff;
       box-shadow: 0 4px 16px rgba(180, 130, 100, 0.22);
     }
 
-    /* Variante secundaria — rosa */
     .btn-rosa {
       background: linear-gradient(135deg, #e8a898 0%, #efb9ab 100%);
       color: #fff;
       box-shadow: 0 4px 16px rgba(232, 168, 152, 0.28);
     }
 
-    /* Variante outline */
-    .btn-outline {
-      background: transparent;
-      border: 2px solid var(--dorado);
+    .btn-mp {
+      background: linear-gradient(135deg, #009ee3 0%, #00b1f0 100%);
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(0, 158, 227, 0.28);
+    }
+
+    .card-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
       color: var(--dorado-txt);
-      box-shadow: 0 2px 10px rgba(180, 130, 100, 0.10);
+      letter-spacing: 0.02em;
     }
 
-    .btn-outline:hover {
-      background: rgba(201, 169, 110, 0.08);
+    .card-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: auto;
     }
 
-    /* Iconos SVG inline */
-    .btn svg {
+    /* ─── SECCIÓN NUTRIORDEN ─── */
+    .nutriorden-section {
+      width: 100%;
+      max-width: 900px;
+      padding: 0 24px;
+      margin: 48px 0;
+    }
+
+    .nutriorden-card {
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 6px 28px rgba(180, 130, 100, 0.15);
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 0;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .nutriorden-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 40px rgba(180, 130, 100, 0.22);
+    }
+
+    .nutriorden-img {
+      width: 42%;
       flex-shrink: 0;
-      width: 20px;
-      height: 20px;
-      fill: currentColor;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      display: block;
+      background: #f0e8e0;
     }
 
-    /* Separador decorativo */
-    .divider {
+    .nutriorden-body {
+      padding: 28px 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .nutriorden-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--rosa-medio);
+    }
+
+    .nutriorden-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.7rem;
+      font-weight: 600;
+      color: var(--dorado-txt);
+      line-height: 1.1;
+    }
+
+    .nutriorden-desc {
+      font-size: 0.9rem;
+      color: var(--texto);
+      line-height: 1.55;
+      font-weight: 300;
+    }
+
+    /* ─── WHATSAPP FLOTANTE ─── */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 999;
+      width: 56px;
+      height: 56px;
+      background: #25d366;
+      border-radius: 50%;
       display: flex;
       align-items: center;
-      gap: 10px;
-      color: var(--rosa-medio);
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1rem;
-      letter-spacing: 0.15em;
-      margin: 4px 0;
+      justify-content: center;
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
-    .divider::before,
-    .divider::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: linear-gradient(to right, transparent, var(--rosa-medio), transparent);
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 10px 28px rgba(37, 211, 102, 0.55);
+    }
+
+    .whatsapp-float svg {
+      width: 30px;
+      height: 30px;
+      fill: #fff;
     }
 
     /* ─── FOOTER ─── */
     footer {
       margin-top: auto;
-      padding: 24px 20px 36px;
+      padding: 32px 20px 48px;
       text-align: center;
+      border-top: 1px solid rgba(232, 168, 152, 0.25);
+      width: 100%;
     }
 
     .footer-text {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.05rem;
+      font-size: 1.15rem;
       font-weight: 400;
       color: var(--dorado-txt);
-      letter-spacing: 0.03em;
+      letter-spacing: 0.04em;
     }
 
     .footer-copy {
       font-size: 0.75rem;
       color: var(--rosa-medio);
-      margin-top: 6px;
+      margin-top: 8px;
       font-weight: 300;
     }
 
     /* ─── RESPONSIVE ─── */
-    @media (max-width: 400px) {
-      header { padding: 24px 16px 0; }
-      main { padding: 24px 16px 32px; gap: 12px; }
-      .btn { font-size: 0.88rem; padding: 14px 20px; }
+    @media (max-width: 600px) {
+      .nutriorden-card {
+        flex-direction: column;
+      }
+
+      .nutriorden-img {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+      }
+
+      .nutriorden-body {
+        padding: 20px 22px 24px;
+      }
+
+      .cards-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+      }
+
+      .section-title {
+        margin: 36px 24px 24px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- ════════════ HEADER ════════════ -->
-  <header>
-    <div class="logo-wrap">
-      <img src="imágenes/logo.png" alt="ROSA Productos Digitales" />
+  <!-- ════════════ BANNER FULL WIDTH ════════════ -->
+  <div class="banner-full">
+    <img src="imágenes/banner.png" alt="ROSA Productos Digitales" />
+  </div>
+
+  <!-- ════════════ NUESTRAS AGENDAS ════════════ -->
+  <h2 class="section-title">Nuestras Agendas</h2>
+
+  <div class="cards-grid">
+
+    <!-- Card TERRA -->
+    <div class="card">
+      <img class="card-img" src="imágenes/terra-portada.png" alt="Agenda Terra" />
+      <div class="card-body">
+        <div class="card-name">Terra</div>
+        <p class="card-desc">Agenda Digital Anual 2026 | Estética natural y cálida</p>
+        <div class="card-price">$7.000</div>
+        <div class="card-buttons">
+          <a href="https://mpago.li/1fmE6dc" target="_blank" rel="noopener" class="btn btn-mp">
+            Comprar con Mercado Pago
+          </a>
+          <a href="https://www.etsy.com/shop/ROSAproductosdigit" target="_blank" rel="noopener" class="btn btn-dorado">
+            Comprar en Etsy
+          </a>
+        </div>
+      </div>
     </div>
 
-    <div class="banner-wrap">
-      <img src="imágenes/banner.png" alt="Banner ROSA" />
+    <!-- Card BRUNELLA -->
+    <div class="card">
+      <img class="card-img" src="imágenes/brunella-portada.png" alt="Agenda Brunella" />
+      <div class="card-body">
+        <div class="card-name">Brunella</div>
+        <p class="card-desc">Agenda Digital 2026 | Sofisticada y elegante</p>
+        <div class="card-price">$9.000</div>
+        <div class="card-buttons">
+          <a href="https://mpago.li/2CgmbDR" target="_blank" rel="noopener" class="btn btn-mp">
+            Comprar con Mercado Pago
+          </a>
+          <a href="https://www.etsy.com/shop/ROSAproductosdigit" target="_blank" rel="noopener" class="btn btn-dorado">
+            Comprar en Etsy
+          </a>
+        </div>
+      </div>
     </div>
 
-    <p class="tagline">Productos digitales con amor y propósito</p>
-  </header>
+    <!-- Card STELLINA -->
+    <div class="card">
+      <img class="card-img" src="imágenes/stellina-portada.png" alt="Agenda Stellina" />
+      <div class="card-body">
+        <div class="card-name">Stellina</div>
+        <p class="card-desc">Mini Agenda Digital para celular</p>
+        <div class="card-price">$1.000</div>
+        <div class="card-buttons">
+          <a href="https://mpago.li/1m3J3qg" target="_blank" rel="noopener" class="btn btn-mp">
+            Comprar con Mercado Pago
+          </a>
+        </div>
+      </div>
+    </div>
 
-  <!-- ════════════ LINKS ════════════ -->
-  <main>
+  </div>
 
-    <!-- Tienda Nube -->
-    <a href="https://ordenarte8.mitiendanube.com/" target="_blank" rel="noopener" class="btn btn-dorado">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M6 2h12l1.5 6H4.5L6 2zm-2 7h16v13H4V9zm6 2v2H8v2h4v2h2v-2h2v-2h-4v-2h-2z"/>
-      </svg>
-      Tiendanube
-    </a>
+  <!-- ════════════ NUTRIORDEN ════════════ -->
+  <section class="nutriorden-section">
+    <div class="nutriorden-card">
+      <img class="nutriorden-img" src="imágenes/nutriorden.jpg" alt="NutriOrden" />
+      <div class="nutriorden-body">
+        <span class="nutriorden-badge">App por suscripción</span>
+        <div class="nutriorden-name">NutriOrden</div>
+        <p class="nutriorden-desc">Tu asistente de cocina saludable | Planificá tus comidas, organizá tus recetas y llevá una vida más ordenada y nutritiva.</p>
+        <a href="https://nutriorden.lovable.app" target="_blank" rel="noopener" class="btn btn-rosa" style="align-self: flex-start;">
+          Conocer NutriOrden
+        </a>
+      </div>
+    </div>
+  </section>
 
-    <!-- NutriOrden -->
-    <a href="https://nutriorden.lovable.app" target="_blank" rel="noopener" class="btn btn-rosa">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/>
-      </svg>
-      NutriOrden
-    </a>
-
-    <div class="divider">✦</div>
-
-    <!-- Hotmart -->
-    <a href="https://hotmart.com/es/club/carina-gimenez" target="_blank" rel="noopener" class="btn btn-dorado">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zm0 12.5L3 11.25V13l9 4.91L21 13v-1.75L12 15.5z"/>
-      </svg>
-      Hotmart
-    </a>
-
-    <!-- Etsy -->
-    <a href="https://www.etsy.com/shop/ROSAproductosdigit" target="_blank" rel="noopener" class="btn btn-outline">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M9.16 19.94c-.39 0-.7-.31-.7-.7V4.76c0-.39.31-.7.7-.7h7.69c.39 0 .7.31.7.7v1.95c0 .39-.31.7-.7.7H11.5v3.86h4.5c.39 0 .7.31.7.7v1.95c0 .39-.31.7-.7.7h-4.5v4.56h5.35c.39 0 .7.31.7.7v1.95c0 .39-.31.7-.7.7H9.16z"/>
-      </svg>
-      Etsy
-    </a>
-
-    <div class="divider">✦</div>
-
-    <!-- WhatsApp -->
-    <a href="https://wa.me/5493764552196" target="_blank" rel="noopener" class="btn btn-rosa">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.472-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-        <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.852L.057 23.25l5.546-1.452A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.002-1.368l-.358-.213-3.296.864.878-3.208-.234-.37A9.816 9.816 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/>
-      </svg>
-      WhatsApp
-    </a>
-
-  </main>
+  <!-- ════════════ WHATSAPP FLOTANTE ════════════ -->
+  <a class="whatsapp-float" href="https://wa.me/5493764552196" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.472-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+      <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.852L.057 23.25l5.546-1.452A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.002-1.368l-.358-.213-3.296.864.878-3.208-.234-.37A9.816 9.816 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/>
+    </svg>
+  </a>
 
   <!-- ════════════ FOOTER ════════════ -->
   <footer>
