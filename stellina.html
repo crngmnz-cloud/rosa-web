@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>STELLINA — Mini Agenda Digital | ROSA</title>
+  <link rel="icon" href="imagenes/icono.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --fondo:      #f9ece8;
+      --rosa-medio: #e8a898;
+      --dorado:     #c9a96e;
+      --texto:      #6b5b52;
+      --dorado-txt: #b8864e;
+    }
+
+    body {
+      background-color: var(--fondo);
+      color: var(--texto);
+      font-family: 'Lato', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .banner-full { width: 100%; line-height: 0; }
+    .banner-full img { width: 100%; height: auto; display: block; max-height: 520px; object-fit: cover; }
+
+    .back-link {
+      align-self: flex-start;
+      margin: 28px 0 0 28px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--dorado-txt);
+      text-decoration: none;
+      transition: opacity 0.18s;
+    }
+    .back-link:hover { opacity: 0.65; }
+
+    .product-header {
+      text-align: center;
+      padding: 36px 24px 0;
+      max-width: 680px;
+    }
+
+    .product-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 7vw, 3.2rem);
+      font-weight: 600;
+      color: var(--dorado-txt);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .product-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1rem, 3vw, 1.35rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--texto);
+      margin-top: 10px;
+      letter-spacing: 0.03em;
+    }
+
+    .divider {
+      width: 60px;
+      height: 1px;
+      background: var(--rosa-medio);
+      margin: 24px auto;
+      opacity: 0.5;
+    }
+
+    .buy-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      padding: 0 24px 48px;
+      width: 100%;
+      max-width: 480px;
+    }
+
+    .price-tag {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--dorado-txt);
+      letter-spacing: 0.04em;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 15px 32px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+      cursor: pointer;
+      border: none;
+      width: 100%;
+      max-width: 360px;
+    }
+
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(180,130,100,0.3); }
+
+    .btn-mp {
+      background: linear-gradient(135deg, #009ee3 0%, #00b1f0 100%);
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(0,158,227,0.28);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--dorado);
+      color: var(--dorado-txt);
+      box-shadow: none;
+    }
+
+    .section-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--dorado-txt);
+      text-align: center;
+      margin: 40px 24px 16px;
+      letter-spacing: 0.04em;
+    }
+
+    .video-placeholder {
+      width: 100%;
+      max-width: 720px;
+      aspect-ratio: 16 / 9;
+      background: #f0e0d8;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 24px;
+    }
+
+    .video-placeholder span {
+      font-size: 0.82rem;
+      color: var(--rosa-medio);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      width: 100%;
+      max-width: 720px;
+      padding: 0 24px;
+      margin-bottom: 48px;
+    }
+
+    .gallery-item {
+      aspect-ratio: 3 / 4;
+      background: #f0e0d8;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .gallery-item span {
+      font-size: 0.72rem;
+      color: var(--rosa-medio);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .popup-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(107,91,82,0.45);
+      backdrop-filter: blur(3px);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .popup-overlay.active { display: flex; }
+
+    .popup {
+      background: #fff;
+      border-radius: 24px;
+      padding: 36px 32px 28px;
+      max-width: 420px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(107,91,82,0.25);
+      animation: popup-in 0.25s ease;
+    }
+
+    @keyframes popup-in {
+      from { transform: scale(0.92); opacity: 0; }
+      to   { transform: scale(1);    opacity: 1; }
+    }
+
+    .popup-rose { margin-bottom: 12px; }
+
+    .popup-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.55rem;
+      font-weight: 600;
+      color: var(--dorado-txt);
+      margin-bottom: 14px;
+      line-height: 1.2;
+    }
+
+    .popup-text {
+      font-size: 0.92rem;
+      color: var(--texto);
+      line-height: 1.65;
+      font-weight: 300;
+      margin-bottom: 24px;
+    }
+
+    .popup-buttons { display: flex; flex-direction: column; gap: 10px; }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 999;
+      width: 56px;
+      height: 56px;
+      background: #25d366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 20px rgba(37,211,102,0.45);
+      transition: transform 0.2s ease;
+    }
+    .whatsapp-float:hover { transform: scale(1.1); }
+    .whatsapp-float svg { width: 30px; height: 30px; fill: #fff; }
+
+    footer {
+      margin-top: auto;
+      padding: 32px 20px 48px;
+      text-align: center;
+      border-top: 1px solid rgba(232,168,152,0.25);
+      width: 100%;
+    }
+    .footer-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: var(--dorado-txt);
+      letter-spacing: 0.04em;
+    }
+    .footer-copy { font-size: 0.75rem; color: var(--rosa-medio); margin-top: 8px; font-weight: 300; }
+  </style>
+</head>
+<body>
+
+  <div class="banner-full">
+    <img src="imagenes/stellina-portada.jpg" alt="STELLINA — Mini Agenda Digital" />
+  </div>
+
+  <a href="index.html" class="back-link">← Volver a ROSA</a>
+
+  <div class="product-header">
+    <div class="product-title">STELLINA — Mini Agenda Digital</div>
+    <div class="product-subtitle">Mini agenda digital para celular</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section-label">Mirá cómo es por dentro</div>
+  <div class="video-placeholder">
+    <span>Video próximamente</span>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section-label">Galería</div>
+  <div class="gallery">
+    <div class="gallery-item"><span>Imagen 1</span></div>
+    <div class="gallery-item"><span>Imagen 2</span></div>
+    <div class="gallery-item"><span>Imagen 3</span></div>
+  </div>
+
+  <div class="buy-section">
+    <div class="price-tag">$1.000 ARS</div>
+    <button onclick="abrirPopup('https://mpago.li/1m3J3qg')" class="btn btn-mp">
+      Comprar en Argentina
+    </button>
+  </div>
+
+  <a class="whatsapp-float" href="https://wa.me/5493764552196" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.472-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+      <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.852L.057 23.25l5.546-1.452A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.002-1.368l-.358-.213-3.296.864.878-3.208-.234-.37A9.816 9.816 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/>
+    </svg>
+  </a>
+
+  <div class="popup-overlay" id="popup-overlay" onclick="cerrarPopupOverlay(event)">
+    <div class="popup">
+      <div class="popup-rose"><img src="imagenes/rosa-icono.png" alt="Rosa" style="width:80px;height:80px;object-fit:contain;display:block;margin:0 auto;"></div>
+      <div class="popup-title">¡Gracias por elegir ROSA!</div>
+      <p class="popup-text">
+        Una vez confirmado tu pago, recibirás tu agenda digital en tu correo electrónico dentro de las próximas <strong>12 horas</strong>.<br><br>
+        ¡Que la disfrutes! 💜
+      </p>
+      <div class="popup-buttons">
+        <a id="popup-link" href="#" target="_blank" rel="noopener" class="btn btn-mp">
+          Continuar al pago →
+        </a>
+        <button onclick="cerrarPopup()" class="btn btn-outline">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function abrirPopup(url) {
+      document.getElementById('popup-link').href = url;
+      document.getElementById('popup-overlay').classList.add('active');
+    }
+    function cerrarPopup() {
+      document.getElementById('popup-overlay').classList.remove('active');
+    }
+    function cerrarPopupOverlay(e) {
+      if (e.target === document.getElementById('popup-overlay')) cerrarPopup();
+    }
+  </script>
+
+  <footer>
+    <p class="footer-text">Planificá bonito, viví mejor 🌹</p>
+    <p class="footer-copy">© 2026 ROSA Productos Digitales</p>
+  </footer>
+
+</body>
+</html>
