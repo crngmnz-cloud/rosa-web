@@ -242,6 +242,67 @@
       font-weight: 300;
     }
 
+    /* ─── POPUP ─── */
+    .popup-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(107, 91, 82, 0.45);
+      backdrop-filter: blur(3px);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .popup-overlay.active {
+      display: flex;
+    }
+
+    .popup {
+      background: #fff;
+      border-radius: 24px;
+      padding: 36px 32px 28px;
+      max-width: 420px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(107, 91, 82, 0.25);
+      animation: popup-in 0.25s ease;
+    }
+
+    @keyframes popup-in {
+      from { transform: scale(0.92); opacity: 0; }
+      to   { transform: scale(1);    opacity: 1; }
+    }
+
+    .popup-rose {
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+
+    .popup-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.55rem;
+      font-weight: 600;
+      color: var(--dorado-txt);
+      margin-bottom: 14px;
+      line-height: 1.2;
+    }
+
+    .popup-text {
+      font-size: 0.92rem;
+      color: var(--texto);
+      line-height: 1.65;
+      font-weight: 300;
+      margin-bottom: 24px;
+    }
+
+    .popup-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
     /* ─── WHATSAPP FLOTANTE ─── */
     .whatsapp-float {
       position: fixed;
@@ -340,9 +401,9 @@
         <p class="card-desc">Agenda Digital Anual 2026 | Estética natural y cálida</p>
         <div class="card-price">$7.000</div>
         <div class="card-buttons">
-          <a href="https://mpago.li/1fmE6dc" target="_blank" rel="noopener" class="btn btn-mp">
+          <button onclick="abrirPopup('https://mpago.li/1fmE6dc')" class="btn btn-mp">
             Comprar con Mercado Pago
-          </a>
+          </button>
           <a href="https://www.etsy.com/shop/ROSAproductosdigit" target="_blank" rel="noopener" class="btn btn-dorado">
             Comprar en Etsy
           </a>
@@ -358,9 +419,9 @@
         <p class="card-desc">Agenda Digital 2026 | Sofisticada y elegante</p>
         <div class="card-price">$9.000</div>
         <div class="card-buttons">
-          <a href="https://mpago.li/2CgmbDR" target="_blank" rel="noopener" class="btn btn-mp">
+          <button onclick="abrirPopup('https://mpago.li/2CgmbDR')" class="btn btn-mp">
             Comprar con Mercado Pago
-          </a>
+          </button>
           <a href="https://www.etsy.com/shop/ROSAproductosdigit" target="_blank" rel="noopener" class="btn btn-dorado">
             Comprar en Etsy
           </a>
@@ -376,9 +437,9 @@
         <p class="card-desc">Mini Agenda Digital para celular</p>
         <div class="card-price">$1.000</div>
         <div class="card-buttons">
-          <a href="https://mpago.li/1m3J3qg" target="_blank" rel="noopener" class="btn btn-mp">
+          <button onclick="abrirPopup('https://mpago.li/1m3J3qg')" class="btn btn-mp">
             Comprar con Mercado Pago
-          </a>
+          </button>
         </div>
       </div>
     </div>
@@ -407,6 +468,41 @@
       <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.852L.057 23.25l5.546-1.452A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.002-1.368l-.358-.213-3.296.864.878-3.208-.234-.37A9.816 9.816 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/>
     </svg>
   </a>
+
+  <!-- ════════════ POPUP MERCADO PAGO ════════════ -->
+  <div class="popup-overlay" id="popup-overlay" onclick="cerrarPopupOverlay(event)">
+    <div class="popup">
+      <div class="popup-rose">🌹</div>
+      <div class="popup-title">¡Gracias por elegir ROSA!</div>
+      <p class="popup-text">
+        Una vez confirmado tu pago, recibirás tu agenda digital en tu correo electrónico dentro de las próximas <strong>12 horas</strong>.<br><br>
+        ¡Que la disfrutes! 💜
+      </p>
+      <div class="popup-buttons">
+        <a id="popup-link" href="#" target="_blank" rel="noopener" class="btn btn-mp">
+          Continuar al pago →
+        </a>
+        <button onclick="cerrarPopup()" class="btn btn-dorado" style="background: transparent; border: 2px solid var(--dorado); color: var(--dorado-txt); box-shadow: none;">
+          Cancelar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function abrirPopup(url) {
+      document.getElementById('popup-link').href = url;
+      document.getElementById('popup-overlay').classList.add('active');
+    }
+
+    function cerrarPopup() {
+      document.getElementById('popup-overlay').classList.remove('active');
+    }
+
+    function cerrarPopupOverlay(e) {
+      if (e.target === document.getElementById('popup-overlay')) cerrarPopup();
+    }
+  </script>
 
   <!-- ════════════ FOOTER ════════════ -->
   <footer>
