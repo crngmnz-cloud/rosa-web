@@ -190,21 +190,13 @@
       margin-bottom: 48px;
     }
 
-    .gallery-item {
+    .gallery-img {
+      width: 100%;
       aspect-ratio: 3 / 4;
-      background: #f0e0d8;
+      object-fit: cover;
       border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .gallery-item span {
-      font-size: 0.72rem;
-      color: var(--rosa-medio);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      font-weight: 700;
+      box-shadow: 0 6px 20px rgba(180, 130, 100, 0.15);
+      display: block;
     }
 
     /* ─── POPUP ─── */
@@ -335,9 +327,9 @@
   <!-- GALERÍA -->
   <div class="section-label">Galería</div>
   <div class="gallery">
-    <div class="gallery-item"><span>Imagen 1</span></div>
-    <div class="gallery-item"><span>Imagen 2</span></div>
-    <div class="gallery-item"><span>Imagen 3</span></div>
+    <img src="imagenes/terra-galería-1.jpg" alt="TERRA interior 1" class="gallery-img" />
+    <img src="imagenes/terra-galería-2.jpg" alt="TERRA interior 2" class="gallery-img" />
+    <img src="imagenes/terra-galería-3.jpg" alt="TERRA interior 3" class="gallery-img" />
   </div>
 
   <!-- COMPRA -->
