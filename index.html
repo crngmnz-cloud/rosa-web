@@ -355,6 +355,89 @@
       font-weight: 300;
     }
 
+    /* ─── SECCIÓN BIENVENIDA ─── */
+    .bienvenida {
+      width: 100%;
+      background: var(--fondo);
+      padding: 56px 24px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .bienvenida-inner {
+      max-width: 900px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 48px;
+    }
+
+    .bienvenida-img {
+      width: 280px;
+      flex-shrink: 0;
+      border-radius: 20px;
+      object-fit: cover;
+      box-shadow: 0 8px 32px rgba(180, 130, 100, 0.18);
+    }
+
+    .bienvenida-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .bienvenida-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 600;
+      color: var(--dorado-txt);
+      line-height: 1.15;
+    }
+
+    .bienvenida-text {
+      font-size: 0.97rem;
+      color: var(--texto);
+      line-height: 1.65;
+      font-weight: 300;
+    }
+
+    .bienvenida-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .bienvenida-form input {
+      padding: 13px 18px;
+      border: 1.5px solid rgba(201, 169, 110, 0.4);
+      border-radius: 50px;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.9rem;
+      color: var(--texto);
+      background: #fff;
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+
+    .bienvenida-form input:focus {
+      border-color: var(--dorado);
+    }
+
+    .bienvenida-form input::placeholder {
+      color: #c4a99a;
+      font-weight: 300;
+    }
+
+    .bienvenida-msg {
+      font-size: 0.85rem;
+      text-align: center;
+      color: var(--dorado-txt);
+      display: none;
+      font-weight: 400;
+    }
+
     /* ─── RESPONSIVE ─── */
     @media (max-width: 600px) {
       .nutriorden-card {
@@ -378,10 +461,38 @@
       .section-title {
         margin: 36px 24px 24px;
       }
+
+      .bienvenida-inner {
+        flex-direction: column;
+        gap: 28px;
+      }
+
+      .bienvenida-img {
+        width: 100%;
+        max-width: 320px;
+        align-self: center;
+      }
     }
   </style>
 </head>
 <body>
+
+  <!-- ════════════ BIENVENIDA + REGALO ════════════ -->
+  <section class="bienvenida">
+    <div class="bienvenida-inner">
+      <img class="bienvenida-img" src="imagenes/stellina-portada.jpg" alt="Stellina mini agenda digital" />
+      <div class="bienvenida-content">
+        <h1 class="bienvenida-title">¡Bienvenida a ROSA! 🌹</h1>
+        <p class="bienvenida-text">Como regalo de bienvenida te regalamos <strong>STELLINA</strong>, nuestra mini agenda digital gratuita para organizar tu vida desde el celular.</p>
+        <form class="bienvenida-form" id="form-regalo" onsubmit="enviarRegalo(event)">
+          <input type="text" name="nombre" placeholder="Tu nombre" required />
+          <input type="email" name="email" placeholder="Tu email" required />
+          <button type="submit" class="btn btn-dorado">¡Quiero mi regalo gratis!</button>
+          <p class="bienvenida-msg" id="msg-regalo">¡Listo! En breve recibís tu Stellina 🌸</p>
+        </form>
+      </div>
+    </div>
+  </section>
 
   <!-- ════════════ BANNER FULL WIDTH ════════════ -->
   <div class="banner-full">
@@ -490,6 +601,24 @@
   </div>
 
   <script>
+    async function enviarRegalo(e) {
+      e.preventDefault();
+      const form = e.target;
+      const data = {
+        nombre: form.nombre.value,
+        email: form.email.value
+      };
+      try {
+        await fetch('[ZAPIER_URL]', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+      } catch (_) {}
+      form.querySelector('button').disabled = true;
+      document.getElementById('msg-regalo').style.display = 'block';
+    }
+
     function abrirPopup(url) {
       document.getElementById('popup-link').href = url;
       document.getElementById('popup-overlay').classList.add('active');
